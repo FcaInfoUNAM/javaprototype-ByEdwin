@@ -1,6 +1,4 @@
-package prototype;
-
-public class GraphicElement {
+public class GraphicElement implements Cloneable {
     private String shape;
     private String color;
     private int x, y;
@@ -19,10 +17,50 @@ public class GraphicElement {
         }
         System.out.println("Expensive GraphicElement constructor called");
     }
+
+    @Override
+    public GraphicElement clone() {
+        try {
+            return (GraphicElement) super.clone();
+        } catch (CloneNotSupportedException e) {
+            throw new AssertionError();
+        }
+    }
+
      @Override
     public String toString() {
         return String.format("GraphicElement [shape=%s, color=%s, x=%d, y=%d]", shape, color, x, y);
     }
-}
+    
+    public String getShape() {
+        return shape;
+    }
 
-    // ... getters and setters for the fields ...
+    public void setShape(String shape) {
+        this.shape = shape;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public void setX(int x) {
+        this.x = x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public void setY(int y) {
+        this.y = y;
+    }
+}
